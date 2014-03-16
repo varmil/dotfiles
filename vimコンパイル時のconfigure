@@ -1,0 +1,8 @@
+./configure --with-x --with-gnome --enable-xim --with-features=big --enable-multibyte --enable-fail-if-missing
+
+
+./configure --with-x --with-gnome --enable-xim --with-features=big --enable-perlinterp --enable-rubyinterp --enable-multibyte
+
+
+./configure --enable-multibyte --with-features=huge --prefix=/usr/local --enable-luainterp=yes --with-lua-prefix=/usr
+
