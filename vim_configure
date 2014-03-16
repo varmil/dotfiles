@@ -1,8 +1,8 @@
 ./configure --with-x --with-gnome --enable-xim --with-features=big --enable-multibyte --enable-fail-if-missing
 
-
+" config for clipboard+. But not worked for me yet
 ./configure --with-x --with-gnome --enable-xim --with-features=big --enable-perlinterp --enable-rubyinterp --enable-multibyte
 
-
+" well worked on centos6. But clipboard-
 ./configure --enable-multibyte --with-features=huge --prefix=/usr/local --enable-luainterp=yes --with-lua-prefix=/usr
 
