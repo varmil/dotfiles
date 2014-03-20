@@ -9,7 +9,7 @@ set clipboard=autoselect
 
 " 無名レジスタに入るデータを、*レジスタにも入れる。
 set clipboard+=unnamed
-" set clipboard=unnamedplus " this workes only on Ubuntu
+" set clipboard=unnamedplus " this works only on Ubuntu
 
 set number
 set hlsearch
