@@ -1,16 +1,20 @@
-colorscheme koehler
+set nocompatible               " Be iMproved
+
+colorscheme desert
 syntax on
 
 " ビジュアルモードで選択したテキストが、クリップボードに入るようにする
 " http://nanasi.jp/articles/howto/editing/clipboard.html
-" set clipboard=autoselect
+set clipboard=autoselect
 
 " 無名レジスタに入るデータを、*レジスタにも入れる。
-" set clipboard+=unnamed  //this is not worked
-set clipboard=unnamedplus
+set clipboard+=unnamed
+" set clipboard=unnamedplus " this is worked on Ubuntu
 
 set number
 set hlsearch
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+
 
  " Enable use of the mouse for all modes
  " 全モードでマウスを有効化
@@ -51,6 +55,10 @@ set hlsearch
 
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 set cursorline     " カーソル行の背景色を変える
+set t_Co=256
+hi CursorLine   term=reverse cterm=none ctermbg=235
+hi StatusLine   ctermfg=yellow ctermbg=17 cterm=none
+hi LineNr       ctermfg=gray cterm=none
 set laststatus=2   " ステータス行を常に表示
 set cmdheight=2    " メッセージ表示欄を2行確保
 set showmatch      " 対応する括弧を強調表示
@@ -102,3 +110,35 @@ map <silent> [Tag]n :tabnext<CR>
 map <silent> [Tag]p :tabprevious<CR>
 " tp 前のタブ
 " ********** TAB Setting End **********
+
+
+"--------------------------------------------------------------------------
+" neobundle
+"filetype off                   " Required!
+
+"if has('vim_starting')
+"  set runtimepath+=~/.vim/bundle/neobundle.vim/
+"  call neobundle#rc(expand('~/.vim/bundle/'))
+"endif
+
+"netrw.vimと競合
+"NeoBundle 'scrooloose/nerdtree'
+
+"filetype plugin indent on     " Required!
+
+"NERD_tree.vim
+"---------------------
+"nnoremap <f2> :NERDTreeToggle<CR>
+
+"netrw.vim
+"---------------------
+ "netrwは常にtree view
+ let g:netrw_liststyle = 3
+ " CVSと.で始まるファイルは表示しない
+ "let g:netrw_list_hide = 'CVS,\(^\|\s\s\)\zs\.\S\+'
+ " 'v'でファイルを開くときは右側に開く。(デフォルトが左側なので入れ替え)
+ let g:netrw_altv = 1
+ " 'o'でファイルを開くときは下側に開く。(デフォルトが上側なので入れ替え)
+ let g:netrw_alto = 1
+ " F2キーでツリー表示
+ nnoremap <f2> :Explore<CR>
