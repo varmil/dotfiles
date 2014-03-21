@@ -13,7 +13,8 @@ set clipboard+=unnamed
 
 set number
 set hlsearch
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set incsearch
+set statusline=%<%F\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
 
  " Enable use of the mouse for all modes
@@ -25,8 +26,17 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 
  " Better command-line completion
  " コマンドライン補完を便利に
- set wildmenu
- 
+ set wildmenu wildmode=list:full
+
+ " 自動補完ポップアップを常に表示
+ set completeopt=menuone
+ for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
+   exec "imap " . k . " " . k . "<C-N><C-P>"
+ endfor
+
+ imap <expr> <TAB> pumvisible() ? "\<Down>" : "\<Tab>"
+
+
  " Show partial commands in the last line of the screen
  " タイプ途中のコマンドを画面最下行に表示
  set showcmd
@@ -114,21 +124,19 @@ map <silent> <f3> :tabprevious<CR>
 
 "--------------------------------------------------------------------------
 " neobundle
-"filetype off                   " Required!
+filetype off                   " Required!
 
-"if has('vim_starting')
-"  set runtimepath+=~/.vim/bundle/neobundle.vim/
-"  call neobundle#rc(expand('~/.vim/bundle/'))
-"endif
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
 
 "netrw.vimと競合
 "NeoBundle 'scrooloose/nerdtree'
 
-"filetype plugin indent on     " Required!
 
-"NERD_tree.vim
-"---------------------
-"nnoremap <f2> :NERDTreeToggle<CR>
+filetype plugin indent on     " Required!
+
 
 "netrw.vim
 "---------------------
