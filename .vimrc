@@ -1,3 +1,5 @@
+filetype off                   " Required!
+
 set nocompatible               " Be iMproved
 
 colorscheme desert
@@ -11,18 +13,19 @@ set clipboard=autoselect
 set clipboard+=unnamed
 " set clipboard=unnamedplus " this works only on Ubuntu
 
+" 行番号表示
 set number
+" 検索結果のハイライト
 set hlsearch
+" 検索結果を逐次ハイライト
 set incsearch
+" ステータスラインの表示を調整
 set statusline=%<%F\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
 
- " Enable use of the mouse for all modes
  " 全モードでマウスを有効化
  set mouse=a
 
- " ファイル名と内容によってファイルタイプを判別し、ファイルタイププラグインを有効にする
- filetype indent plugin on
 
  " Better command-line completion
  " コマンドライン補完を便利に
@@ -37,29 +40,26 @@ set statusline=%<%F\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
  imap <expr> <TAB> pumvisible() ? "\<Down>" : "\<Tab>"
 
 
- " Show partial commands in the last line of the screen
+" Page Down, Page Upで半画面スクロール
+noremap <C-U> <PageUp>
+noremap <C-D> <PageDown>
+
+
  " タイプ途中のコマンドを画面最下行に表示
  set showcmd
 
-
- " Display the cursor position on the last line of the screen or in the status
- " line of a window
  " 画面最下行にルーラーを表示する
  set ruler
 
- " Use case insensitive search, except when using capital letters
  " 検索時に大文字・小文字を区別しない。ただし、検索後に大文字小文字が
  " 混在しているときは区別する
  set ignorecase
  set smartcase
  
- " Allow backspacing over autoindent, line breaks and start of insert action
  " オートインデント、改行、インサートモード開始直後にバックスペースキーで
  " 削除できるようにする。
  set backspace=indent,eol,start
  
- " When opening a new line and no filetype-specific indenting is enabled, keep
- " the same indent as the line you're currently on. Useful for READMEs, etc.
  " オートインデント
  "set autoindent
 
@@ -124,7 +124,6 @@ map <silent> <f3> :tabprevious<CR>
 
 "--------------------------------------------------------------------------
 " neobundle
-"filetype off                   " Required!
 
 "if has('vim_starting')
 "  set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -135,7 +134,6 @@ map <silent> <f3> :tabprevious<CR>
 "NeoBundle 'scrooloose/nerdtree'
 
 
-"filetype plugin indent on     " Required!
 
 
 "netrw.vim
@@ -150,3 +148,7 @@ map <silent> <f3> :tabprevious<CR>
  let g:netrw_alto = 1
  " F2キーでツリー表示
  nnoremap <f2> :Explore<CR>
+
+
+" ファイル名と内容によってファイルタイプを判別し、ファイルタイププラグインを有効にする
+filetype plugin indent on     " Required!
