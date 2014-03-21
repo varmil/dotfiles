@@ -124,18 +124,18 @@ map <silent> <f3> :tabprevious<CR>
 
 "--------------------------------------------------------------------------
 " neobundle
-filetype off                   " Required!
+"filetype off                   " Required!
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
-endif
+"if has('vim_starting')
+"  set runtimepath+=~/.vim/bundle/neobundle.vim/
+"  call neobundle#rc(expand('~/.vim/bundle/'))
+"endif
 
 "netrw.vimと競合
 "NeoBundle 'scrooloose/nerdtree'
 
 
-filetype plugin indent on     " Required!
+"filetype plugin indent on     " Required!
 
 
 "netrw.vim
