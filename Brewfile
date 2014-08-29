@@ -32,12 +32,9 @@ cask install google-chrome || true
 cask install firefox || true
 cask install alfred || true
 cask install dash || true
-cask install webstorm || true
 cask install eclipse-ide || true
-cask install sublime-text || true
 cask install mou || true
 cask install kobito || true
-cask install sourcetree || true
 cask install mysqlworkbench || true
 cask install sequel-pro || true
 cask install genymotion || true
