@@ -38,10 +38,10 @@ do_start()
 do_stop()
 {
         echo -n $"Stopping $SERVER: "
-        pid=`ps -aefw | grep "$DAEMON $SERVER" | grep -v " grep " | awk '{print $2}'`
-        pid=`ps -aefw | grep "$DAEMON $MANAGER" | grep -v " grep " | awk '{print $2}'`
-        pid=`ps -aefw | grep "$DAEMON $AGENT" | grep -v " grep " | awk '{print $2}'`
-        kill -9 $pid > /dev/null 2>&1 && echo_success || echo_failure
+        pid_server=`ps -aefw | grep "$DAEMON $SERVER" | grep -v " grep " | awk '{print $2}'`
+        pid_manager=`ps -aefw | grep "$DAEMON $MANAGER" | grep -v " grep " | awk '{print $2}'`
+        pid_agent=`ps -aefw | grep "$DAEMON $AGENT" | grep -v " grep " | awk '{print $2}'`
+        kill -9 $pid_server $pid_manager $pid_agent > /dev/null 2>&1 && echo_success || echo_failure
         RETVAL=$?
         echo
         [ $RETVAL -eq 0 ] && rm -f $LOCK_FILE
