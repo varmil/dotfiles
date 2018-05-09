@@ -23,21 +23,19 @@ set incsearch
 set statusline=%<%F\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
 
- " 全モードでマウスを有効化
- set mouse=a
+" 全モードでマウスを有効化
+set mouse=a
 
+" コマンドライン補完をBASHに近く
+set wildmenu wildmode=longest,full
 
- " Better command-line completion
- " コマンドライン補完を便利に
- set wildmenu wildmode=list:full
+" 自動補完ポップアップを常に表示
+set completeopt=menuone
+for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
+  exec "imap " . k . " " . k . "<C-N><C-P>"
+endfor
 
- " 自動補完ポップアップを常に表示
- set completeopt=menuone
- for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
-   exec "imap " . k . " " . k . "<C-N><C-P>"
- endfor
-
- imap <expr> <TAB> pumvisible() ? "\<Down>" : "\<Tab>"
+imap <expr> <TAB> pumvisible() ? "\<Down>" : "\<Tab>"
 
 
 " Page Down, Page Upで半画面スクロール
@@ -45,23 +43,23 @@ noremap <C-U> <PageUp>
 noremap <C-D> <PageDown>
 
 
- " タイプ途中のコマンドを画面最下行に表示
- set showcmd
+" タイプ途中のコマンドを画面最下行に表示
+set showcmd
 
- " 画面最下行にルーラーを表示する
- set ruler
+" 画面最下行にルーラーを表示する
+set ruler
 
- " 検索時に大文字・小文字を区別しない。ただし、検索後に大文字小文字が
- " 混在しているときは区別する
- set ignorecase
- set smartcase
- 
- " オートインデント、改行、インサートモード開始直後にバックスペースキーで
- " 削除できるようにする。
- set backspace=indent,eol,start
- 
- " オートインデント
- "set autoindent
+" 検索時に大文字・小文字を区別しない。ただし、検索後に大文字小文字が
+" 混在しているときは区別する
+set ignorecase
+set smartcase
+
+" オートインデント、改行、インサートモード開始直後にバックスペースキーで
+" 削除できるようにする。
+set backspace=indent,eol,start
+
+" オートインデント
+"set autoindent
 
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 set cursorline     " カーソル行の背景色を変える
@@ -109,8 +107,8 @@ nmap    t [Tag]
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
-" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
 
+" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
 map <silent> <F5> :tablast <bar> tabnew<CR>
 " tc 新しいタブを一番右に作る
 map <silent> <F6> :tabclose<CR>
@@ -122,32 +120,20 @@ map <silent> <f3> :tabprevious<CR>
 " ********** TAB Setting End **********
 
 
-"--------------------------------------------------------------------------
-" neobundle
-
-"if has('vim_starting')
-"  set runtimepath+=~/.vim/bundle/neobundle.vim/
-"  call neobundle#rc(expand('~/.vim/bundle/'))
-"endif
-
-"netrw.vimと競合
-"NeoBundle 'scrooloose/nerdtree'
-
-
 
 
 "netrw.vim
 "---------------------
- "netrwは常にtree view
- let g:netrw_liststyle = 3
- " CVSと.で始まるファイルは表示しない
- "let g:netrw_list_hide = 'CVS,\(^\|\s\s\)\zs\.\S\+'
- " 'v'でファイルを開くときは右側に開く。(デフォルトが左側なので入れ替え)
- let g:netrw_altv = 1
- " 'o'でファイルを開くときは下側に開く。(デフォルトが上側なので入れ替え)
- let g:netrw_alto = 1
- " F2キーでツリー表示
- nnoremap <f2> :Explore<CR>
+"netrwは常にtree view
+let g:netrw_liststyle = 3
+" CVSと.で始まるファイルは表示しない
+"let g:netrw_list_hide = 'CVS,\(^\|\s\s\)\zs\.\S\+'
+" 'v'でファイルを開くときは右側に開く。(デフォルトが左側なので入れ替え)
+let g:netrw_altv = 1
+" 'o'でファイルを開くときは下側に開く。(デフォルトが上側なので入れ替え)
+let g:netrw_alto = 1
+" F2キーでツリー表示
+nnoremap <f2> :Explore<CR>
 
 
 " ファイル名と内容によってファイルタイプを判別し、ファイルタイププラグインを有効にする
