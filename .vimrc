@@ -27,7 +27,7 @@ set statusline=%<%F\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 set mouse=a
 
 " コマンドライン補完をBASHに近く
-set wildmenu wildmode=longest,full
+set wildmenu wildmode=list
 
 " 自動補完ポップアップを常に表示
 set completeopt=menuone
